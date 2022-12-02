@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-size: 1rem;
+      background-color: #613ce7;
+      min-height: 80vh;
+      display: flex;
+      justify-content: center;
+    }
+
+    #john {
+      background: #fff;
+      width: 90vw;
+      margin: 0 auto;
+      max-width: 450px;
+      margin: 5rem 0;
+      border-radius: 0.25rem;
+      padding: 1.5rem 2rem;
+    }
+
+    input {
+      width: 100%;
+      height: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .important {
+      margin-bottom: 1rem;
+      padding: 0.5rem 0;
+      text-align: center;
+      background-color: #d6f71a;
+    }
+
+    .shape {
+      border-radius: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="john">
+    <label style="display: block; margin-bottom: 0.2rem;" for="name">Name : </label>
+    <input id="name" type="text">
+    <div class="important"> Important</div>
+    <div class="important"> Important</div>
+    <div class="important"> Important</div>
+    <div class="important"> Important</div>
+  </div>
+  <script>
+
+    const input = document.getElementById('name');
+
+    input.addEventListener('focus', (event) => {
+      event.stopPropagation()
+      event.target.style.background = 'green';
+    });
+
+    input.addEventListener('focus', () => {
+      let child = document.getElementsByClassName('important');
+      for (let ele of child) {
+        ele.classList.add('shape');
+        ele.innerText = "Important + Shape"
+      }
+    });
+
+    input.addEventListener('blur', (event) => {
+      event.stopPropagation()
+      event.target.style.background = '';
+    });
+
+    input.addEventListener('blur', () => {
+      let child = document.getElementsByClassName('important');
+      for (let ele of child) {
+        ele.classList.remove('shape');
+        ele.innerText = "Important"
+      }
+    });
+
+  </script>
+</body>
+
+</html>

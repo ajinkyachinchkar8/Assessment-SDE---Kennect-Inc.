@@ -1,0 +1,42 @@
+Que:Explain JWT in approx and prove its top 3 benefits
+
+Answer: 
+JWT, or JSON Web Token, is an open standard used to share information between two parties securely — a client and a server.
+In most cases, it’s an encoded JSON containing a set of claims and a signature.
+It’s also a popular way to authenticate/authorize users in a microservice architecture.
+
+STRUCTURE OF JVT.
+JWT structure is divided into three parts: header, payload, signature & is separated from each other by dot.
+1.Header
+The header consists of two parts: 
+  -The signing algorithm being used
+  -The type of token, which is in this case mostly “JWT”
+2.Payload
+The payload usually contains the claims (user attributes) and additional data like issuer, expiration time, and audience. 
+
+3.Signature 
+  -To create the signature part you have to take the encoded header, the encoded payload, a secret, the algorithm specified in the header, and sign that.
+  -The signature is used to verify the message wasn't changed along the way, and, in the case of tokens signed with a private key,
+   it can also verify that the sender of the JWT is who it says it is.
+
+How does JWT works?
+  -JWT contains the user data but is encrypted using a signature that can only be decoded by the backend server,
+   so for revalidation the token is sent to the backend, the backend script has a secret key,
+   which checks the data and validates it and makes sure that the data has not been tampered with,
+   and once the validation is done the backend sends the user data to the browser.
+
+BENEFITS OF JWT-
+
+JWTs can be used in various ways:
+
+1) Authentication: When a user successfully logs in using their credentials, an ID token is returned. According to the OpenID Connect (OIDC) specs, an ID token is always a JWT.
+
+2) Authorization: Once a user is successfully logged in, an application may request to access routes, services, or resources (e.g., APIs) on behalf of that user. To do so, in every request, it must pass an Access Token, which may be in the form of a JWT. Single Sign-on (SSO) widely uses JWT because of the small overhead of the format, and its ability to easily be used across different domains.
+
+3) Information Exchange: JWTs are a good way of securely transmitting information between parties because they can be signed, which means you can be sure that the senders are who they say they are. 
+
+4) Additionally, the structure of a JWT allows you to verify that the content hasn't been tampered with.
+  -You can store any kind of user details on the client
+  -The server can trust the client because the JWT is signed,
+   and there is no need to call the database to retrieve the information you already stored in the JWT
+  -JWT reduces the requests that we have to make on databases, makes the authorization process more easy and fast.
